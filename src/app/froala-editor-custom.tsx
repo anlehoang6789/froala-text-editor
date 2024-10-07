@@ -28,6 +28,7 @@ export default function FloaraEditorCustom() {
   const [model, setModel] = useState(() => {
     return localStorage.getItem("savedHtml") || "";
   });
+  // const [model, setModel] = useState<string>("");
 
   // Custom video upload handling
   const handleVideoUpload = (editor: any, video: File) => {
@@ -66,18 +67,18 @@ export default function FloaraEditorCustom() {
         config={{
           placeholderText: "Gõ nội dung vào đi",
           key: "INSERT-YOUR-FROALA-KEY-HERE",
-          htmlAllowedTags: [
-            "h1",
-            "h2",
-            "h3",
-            "h4",
-            "h5",
-            "h6",
-            "p",
-            "span",
-            "div",
-            "br",
-          ],
+          // htmlAllowedTags: [
+          //   "h1",
+          //   "h2",
+          //   "h3",
+          //   "h4",
+          //   "h5",
+          //   "h6",
+          //   "p",
+          //   "span",
+          //   "div",
+          //   "br",
+          // ],
           // htmlAllowedAttrs: ["style", "class", "id"],
           saveInterval: 2000, //save sau 2s
           events: {
@@ -97,6 +98,12 @@ export default function FloaraEditorCustom() {
           },
           // imageDefaultWidth: 500,
           // imageResize: false,
+          paragraphFormat: {
+            N: "Normal",
+            H1: "Heading 1",
+            H2: "Heading 2",
+            H3: "Heading 3",
+          },
           toolbarButtons: {
             moreText: {
               buttons: [
@@ -115,7 +122,8 @@ export default function FloaraEditorCustom() {
               buttons: [
                 "alignLeft",
                 "alignCenter",
-                "formatOLSimple",
+                "formatOL",
+                "formatUL",
                 "alignRight",
                 "alignJustify",
                 "paragraphFormat",
@@ -158,7 +166,7 @@ export default function FloaraEditorCustom() {
         }}
         tag="textarea"
       />
-      <FroalaEditorView model={model} />
+      {/* <FroalaEditorView model={model} /> */}
     </main>
   );
 }
